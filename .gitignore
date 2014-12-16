@@ -1,0 +1,13 @@
+# OS icon files
+.DS_Store
+Thumbs.db
+
+# Gem vendor directory
+/vendor/
+
+# Puppet pkg directory
+/pkg/
+
+# rspec-puppet fixture symlinks
+/spec/fixtures/manifests
+/spec/fixtures/modules

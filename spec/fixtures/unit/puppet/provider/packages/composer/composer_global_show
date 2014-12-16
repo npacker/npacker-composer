@@ -1,0 +1,4 @@
+behat/mink-selenium2-driver  v1.1.1 Selenium2 (WebDriver) driver for Mink framework
+drush/drush                  6.4.0  Drush is a command line shell and scripting interface for Drupal, a veritable Swiss Army knife designed to make life easier for those of us who spend some of our working hours hacking away at the command prompt.
+facebook/webdriver           v0.4   A php client for WebDriver
+phpunit/php-code-coverage    2.0.11 Library that provides collection, processing, and rendering functionality for PHP code coverage information.
