@@ -1,11 +1,11 @@
 {
   "name": "npacker-composer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Nigel Packer",
   "license": "Apache-2.0",
   "summary": "A module for managing global Composer dependencies through the Puppet package provider.",
   "source": "https://github.com/npacker/npacker-composer",
-  "project_page": "https://forge.puppetlabs.com/npacker/composer",
+  "project_page": "https://github.com/npacker/npacker-composer",
   "issues_url": "https://github.com/npacker/npacker-composer/issues",
   "operatingsystem_support": [
     {
