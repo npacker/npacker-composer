@@ -1,13 +1,15 @@
 # npacker-composer
 
+[![Build Status](https://travis-ci.org/npacker/npacker-composer.svg?branch=master)](https://travis-ci.org/npacker/npacker-composer)
+
 ## Description
 
-A Puppet module to provision the PHP dependancy manager, composer. It adds Composer as a provider to the native Puppet package resource, allowing Composer packages to be provisioned globally.
+A Puppet module to provision the PHP dependancy manager, Composer. It adds Composer as a provider to the native Puppet package resource, allowing Composer packages to be provisioned globally.
 
 ### Components
 
 - Global Composer installation and setup
-- Composer provider for the Puppet package resource
+- Global installation of Composer packages via the Puppet package resource
 
 ## Installation
 
@@ -29,7 +31,7 @@ In order to install and use Composer, the PHP command-line interface must be ins
 
 ## Supported Platforms
 
-This module supports Puppet in versions **>= 2.7, <3.5**
+This module supports Puppet in versions **>= 3.0.0 < 3.8.0**
 
 It has been tested on the following platforms:
 
@@ -45,7 +47,27 @@ Global installation of the Composer binary via Puppet manifest:
 include composer
 ```
 
-### Provision Composer Package
+### Provisioning Composer packages
+
+#### Present
+
+```
+package { 'drush/drush':
+  ensure => present,
+  provider => 'composer'
+}
+```
+
+#### Absent
+
+```
+package { 'drush/drush':
+  ensure => absent,
+  provider => 'composer'
+}
+```
+
+#### Versioned
 
 ```
 package { 'drush/drush':
@@ -56,11 +78,11 @@ package { 'drush/drush':
 
 ## Development
 
-This module uses `rspec-puppet` for unit testing. Functional testing is currently applied manually in a Vagrant VM to realize application in a simulated server scenario.
+This module uses `rspec-puppet` for unit testing. Acceptance testing is currently applied manually in a Vagrant VM to realize application in a simulated server scenario.
 
 ### Unit Tests
 
-New fixes or features should be accompanied by RSpec tests to verify the integrity of the changes in the overtall codebase. Ideally, the full suite should be checked for a passing status before opening a pull request. The gems necessary for running the test suite are cataloged in the included Gemfile. The `bunder` gem must be available in the development environment to install `rspec-puppet` and it's dependencies:
+New fixes or features should be accompanied by RSpec tests to verify the integrity of the changes in the overtall codebase. Ideally, the full suite should be checked for a passing status before opening a pull request. The gems necessary for running the test suite are cataloged in the included Gemfile. The `bundler` gem must be available in the development environment to install `rspec-puppet` and it's dependencies:
 
 ```
 gem install bundler
@@ -94,6 +116,6 @@ bundle exec rake lint
 
 These tasks should pass without errors before opening a pull request.
 
-### Functional Tests
+### Acceptance Tests
 
-Currently, this suite relies on the manual application of functional tests, which are included in the `test` directories in each module. It is recommended to apply these tests with the --debug and --noop flags. Applying tests in a Vagrant VM allows the environment to be restored after each test run via `vagrant destroy`. In future, it is planned to use `beaker` to automate this process.
+Currently, this module relies on the manual application of acceptance tests, which are included in the `test` directories in each module. It is recommended to apply these tests with the --debug and --noop flags. Applying tests in a Vagrant VM allows the environment to be restored after each test run via `vagrant destroy`. In future, it is planned to use `beaker` to automate this process.

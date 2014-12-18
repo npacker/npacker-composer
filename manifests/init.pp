@@ -31,10 +31,10 @@ class composer inherits composer::params {
   }
 
   file { 'composer-home':
-    path    => $composer_home,
-    ensure  => directory
+    ensure => directory,
+    path   => $composer_home
   }
-
+  
   exec { 'composer-install':
     command => "php --run \"readfile('https://getcomposer.org/installer');\" | php",
     creates => "${composer_home}/composer.phar",
@@ -47,5 +47,8 @@ class composer inherits composer::params {
     onlyif  => "test -e ${composer_home}/composer.phar"
   }
   
-  File['composer-home'] -> Exec['composer-install'] -> Exec['composer-make-executable'] -> Package <| provider == 'composer' |>
+  File['composer-home'] ->
+  Exec['composer-install'] ->
+  Exec['composer-make-executable'] ->
+  Package <| provider == 'composer' |>
 }

@@ -2,8 +2,11 @@
 .DS_Store
 Thumbs.db
 
+# Gemfile.lock
+Gemfile.lock
+
 # Gem vendor directory
-/vendor/
+/.vendor/
 
 # Puppet pkg directory
 /pkg/
