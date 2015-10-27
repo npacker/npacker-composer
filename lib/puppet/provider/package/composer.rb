@@ -28,7 +28,7 @@ Puppet::Type.type(:package).provide :composer, :parent => Puppet::Provider::Pack
 
     output.lines.collect do |line|
       package = line[/^[a-z0-9]+\/[a-z0-9-]+\b/]
-      version = line[/(?<=\s|^)v?(?:\d+\.)+\d+(?:-(?:dev|alpha|beta|RC)\d*)?(?=\s|$)/]
+      version = line[/v?(?:\d+\.)+\d+(?:-(?:dev|alpha|beta|RC)\d*)?(?=\s|$)/]
 
       if package && version
         @composerlist[package] = version
@@ -58,7 +58,7 @@ Puppet::Type.type(:package).provide :composer, :parent => Puppet::Provider::Pack
     else
       version = :absent
     end
-    
+
     {:name => resource[:name], :ensure => version, :provider => 'composer'}
   end
 
@@ -69,7 +69,7 @@ Puppet::Type.type(:package).provide :composer, :parent => Puppet::Provider::Pack
       package = "#{resource[:name]}:#{resource[:ensure]}"
     end
 
-    begin      
+    begin
       composer(['global', 'require', '--no-interaction', package])
     rescue Puppet::ExecutionFailure => e
       if $CHILD_STATUS.exitstatus == 1 or e.message.include? 'Installation failed'
