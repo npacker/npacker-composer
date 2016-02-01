@@ -43,6 +43,7 @@ describe provider_class do
         {:name => 'drush/drush', :ensure => '6.4.0', :provider => 'composer'},
         {:name => 'facebook/webdriver', :ensure => 'v0.4', :provider => 'composer'},
         {:name => 'phpunit/php-code-coverage', :ensure => '2.0.11', :provider => 'composer'},
+        {:name => 'squizlabs/php_codesniffer', :ensure => '2.5.1', :provider => 'composer'},
       ])
     end
   end
